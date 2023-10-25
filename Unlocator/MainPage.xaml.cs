@@ -14,6 +14,10 @@ namespace Unlocator
 
         string ip;
 
+        public MainPage() => Connectivity.ConnectivityChanged += Connectivity_ConnectivityChanged;
+
+        ~MainPage() => Connectivity.ConnectivityChanged -= Connectivity_ConnectivityChanged;
+
         public MainPage(IServiceTest Services_)
         {
             InitializeComponent();
@@ -28,7 +32,7 @@ namespace Unlocator
             {
                 Services.Start();
                 timer.Start();
-                service = !service;
+                service = true;
                 UpdateIP();
             }
             else
@@ -37,7 +41,7 @@ namespace Unlocator
                 Connection.TextColor = Colors.Red;
                 Connection.Text = "Not Connected";
                 Connect.Text = "Start Service";
-                service = !service;
+                service = false;
                 timer.Stop();
             }
         }
@@ -53,6 +57,7 @@ namespace Unlocator
             System.Net.WebResponse resp = req.GetResponse();
             System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
             string responseip = sr.ReadToEnd().Trim();
+
 
             if (apikey != "none" && apikey != "")
             {
@@ -108,8 +113,23 @@ namespace Unlocator
                     Connect.IsVisible = false;
                     Setup.Text = "Settings";
                     Setup.IsVisible = true;
-                    service = !service;
+                    service = false;
                     timer.Stop();
+                }
+            }
+        }
+
+
+        void Connectivity_ConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        {
+            if (e.NetworkAccess != NetworkAccess.Internet)
+            {
+                foreach (var item in e.ConnectionProfiles)
+                {
+                    if (item == ConnectionProfile.WiFi)
+                    {
+                        UpdateIP();
+                    }
                 }
             }
         }
