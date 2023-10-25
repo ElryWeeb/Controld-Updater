@@ -29,3 +29,26 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build -c Release -f net7.0-android -p:PackageFormat=Apk
+    - name: version
+      run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
+      id: version
+    - name: release
+      uses: actions/create-release@v1
+      id: create_release
+      with:
+        draft: false
+        prerelease: false
+        release_name: ${{ steps.version.outputs.version }}
+        tag_name: ${{ github.ref }}
+        body_path: CHANGELOG.md
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+    - name: upload android artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\share\
+        asset_name: com.elry.unlocator.dynip.apk
+        asset_content_type: application/apk
