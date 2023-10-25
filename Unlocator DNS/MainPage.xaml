@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Unlocator_DNS.MainPage"
+             Shell.NavBarIsVisible="false">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,30"
+            VerticalOptions="Center">
+
+            <Image Source="logo.jpg"
+                   HeightRequest="64" />
+
+            <Label FontSize="24" FontAttributes="Bold" Text="Dynamic IP Updater" HorizontalOptions="Center" />
+
+            <Label x:Name="IP" FontSize="20" Text="No IP Detected" HorizontalOptions="Center" TextColor="#5539cc"/>
+
+            <Label x:Name="Connection" FontSize="20" Text="You are not Connected" HorizontalOptions="Center" TextColor="Red" />
+
+            <Button x:Name="Connect" Text="Connect" Clicked="Connect_Clicked" IsVisible="false" />
+
+            <Button x:Name="Setup" Text="Set up your Unlocator Token" Clicked="Setup_Clicked" IsVisible="false" />
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
