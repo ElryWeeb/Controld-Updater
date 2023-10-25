@@ -12,6 +12,8 @@ namespace Unlocator
 
         private static readonly HttpClient client = new HttpClient();
 
+        string ip;
+
         public MainPage(IServiceTest Services_)
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace Unlocator
                 Services.Stop();
                 Connection.TextColor = Colors.Red;
                 Connection.Text = "Not Connected";
-                Connect.Text = "Connect";
+                Connect.Text = "Start Service";
                 service = !service;
                 timer.Stop();
             }
@@ -46,6 +48,11 @@ namespace Unlocator
             IEnumerable<ConnectionProfile> profiles = Connectivity.Current.ConnectionProfiles;
 
             string apikey = Preferences.Default.Get("api_key", "none");
+
+            System.Net.WebRequest req = System.Net.WebRequest.Create("http://ifconfig.me");
+            System.Net.WebResponse resp = req.GetResponse();
+            System.IO.StreamReader sr = new System.IO.StreamReader(resp.GetResponseStream());
+            string responseip = sr.ReadToEnd().Trim();
 
             if (apikey != "none" && apikey != "")
             {
@@ -67,37 +74,37 @@ namespace Unlocator
                     {
                         if (profiles.Contains(ConnectionProfile.WiFi))
                         {
+                            if (ip != responseip)
+                            {
+                                Connection.TextColor = Colors.Green;
+                                Connection.Text = responseString;
+                                Connect.Text = "Stop Service";
+                            } else
+                            {
+                                Connection.Text = "IP Synced";
+                            }
 
-                            Connection.TextColor = Colors.Green;
-                            Connection.Text = responseString;
-                            Connect.Text = "Disconnect";
                         }
                         else
                         {
-                            Services.Stop();
-                            Connection.TextColor = Colors.Red;
-                            Connection.Text = "No WLAN";
-                            Connect.Text = "Connect";
-                            service = !service;
-                            timer.Stop();
+                            Connection.TextColor = Colors.Orange;
+                            Connection.Text = "No WLAN - No Update";
+                            Connect.Text = "Stop Service";
                         }
                     }
                     else
                     {
-                        Services.Stop();
                         Connection.TextColor = Colors.Red;
-                        Connection.Text = "No Internet";
-                        Connect.Text = "Connect";
-                        service = !service;
-                        timer.Stop();
+                        Connection.Text = "No Internet - No Update";
+                        Connect.Text = "Stop Service";
                     }
                 }
                 else
                 {
                     Services.Stop();
                     Connection.TextColor = Colors.Red;
-                    Connection.Text = "Apikey Missing";
-                    Connect.Text = "Connect";
+                    Connection.Text = "Wrong / Missing Apikey";
+                    Connect.Text = "Start Service";
                     Connect.IsVisible = false;
                     Setup.Text = "Settings";
                     Setup.IsVisible = true;
