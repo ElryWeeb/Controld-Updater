@@ -31,23 +31,23 @@ jobs:
     - name: Build
       run: dotnet publish -c Release -f net7.0-android -p:PackageFormat=Apk
     - name: Test
-      run: cd D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\share && DIR
-    - name: Create release
-      uses: actions/create-release@v1
-      id: create_release
-      with:
-        draft: false
-        prerelease: false
-        release_name: ${{ github.event.inputs.version }}
-        tag_name: ${{ github.inputs.version }}
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-    - name: upload android artifact
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\share\
-        asset_name: com.elry.unlocator.dynip.apk
-        asset_content_type: application/apk
+      run: Set-Location -Path "D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\share"; DIR
+#    - name: Create release
+#      uses: actions/create-release@v1
+#      id: create_release
+#      with:
+#        draft: false
+#        prerelease: false
+#        release_name: ${{ github.event.inputs.version }}
+#        tag_name: ${{ github.inputs.version }}
+#      env:
+#        GITHUB_TOKEN: ${{ github.token }}
+#    - name: upload android artifact
+#      uses: actions/upload-release-asset@v1
+#      env:
+#        GITHUB_TOKEN: ${{ github.token }}
+#      with:
+#        upload_url: ${{ steps.create_release.outputs.upload_url }}
+#        asset_path: D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\share\
+#        asset_name: com.elry.unlocator.dynip.apk
+#        asset_content_type: application/apk
