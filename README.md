@@ -21,5 +21,5 @@ Automatically update your (WLAN) IP from your Android via Unlocker API Key.
 - Wait for it to set up the Project on your PC
 - Save and Close the Repository after you made your Changes
 - Open a CMD inside the Repository Folder
-- Execute this Command: ```dotnet publish -c Release -f net7.0-android -p:PackageFormat=Apk```
-- The Final APK is under ```Unlocator_DynIP_App\Unlocator\bin\Release\net7.0-android```
+- Open the build.bat in the root folder.
+- The Final APKs are under ```Unlocator_DynIP_App\Unlocator\bin\Release\net7.0-android\```
