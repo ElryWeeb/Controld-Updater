@@ -2,7 +2,7 @@
 
 <img src="https://github.com/ElryWeeb/Unlocator_DynIP_App/blob/main/Unlocator/Resources/Images/unlocator.png" width=100></img>
 
-Automaticall updates your IP from your Android Phone via Unlocker API Key.
+Automatically update your (WLAN) IP from your Android via Unlocker API Key.
 
 <a name="req">Usage Requirements: </a>
 - Unlocator Subsrciption --> https://unlocator.com/account/signup/user
