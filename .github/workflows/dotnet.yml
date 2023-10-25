@@ -30,6 +30,8 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet publish -c Release -f net7.0-android -p:PackageFormat=Apk
+    - name: Test
+      run: cd D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\share && DIR
     - name: Create release
       uses: actions/create-release@v1
       id: create_release
