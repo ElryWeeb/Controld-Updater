@@ -7,4 +7,4 @@ Automaticall updates your IP from your Android Phone via Unlocker API Key.
 Requirements: 
 - Unlocator Subsrciption --> https://unlocator.com/account/signup/user
 - Your API Key --> https://unlocator.com/account/advanced
-- Android Phone with Android 7.1 or higher.
+- Android Phone with Android 10 or higher.

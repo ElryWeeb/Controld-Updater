@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Unlocator.Settings"
+             Shell.NavBarIsVisible="false">
+    
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="20"
+            Padding="30,30"
+            VerticalOptions="Center">
+
+            <Image Source="unlocator.png"
+                   HeightRequest="100" />
+
+            <Label FontSize="22" FontAttributes="Bold" Text="Unlocker IP Updater" TextColor="White"/>
+
+            <Label FontSize="20" Text="Your API Key" TextColor="White" />
+
+            <Entry x:Name="ApiKey" Style="{StaticResource CommonEntryStyle}" />
+
+            <Button Text="Save" Clicked="Save_Button_Clicked" TextColor="White" FontSize="20"/>
+
+            <Button Text="Reset" ImageSource="Images/undo.png" Clicked="Revert_Button_Clicked" FontSize="20" TextColor="White" BackgroundColor="Transparent"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
