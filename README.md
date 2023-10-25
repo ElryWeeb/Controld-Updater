@@ -1,4 +1,4 @@
-# Automatic Unlocator DNS IP Updater
+# Automatic Unlocator IP Updater
 
 ![](https://github.com/ElryWeeb/Unlocator_DynIP_App/blob/main/Unlocator%20DNS/Resources/Images/logo.jpg)
 
