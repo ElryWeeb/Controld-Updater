@@ -20,6 +20,5 @@ Automatically update your (WLAN) IP from your Android via Unlocker API Key.
 - Download the Repository and open it with Visual Studio 2022 with Tools for MAUI
 - Wait for it to set up the Project on your PC
 - Save and Close the Repository after you made your Changes
-- Open a CMD inside the Repository Folder
-- Open the build.bat in the root folder.
+- Use the build.bat in the root folder.
 - The Final APKs are under ```Unlocator_DynIP_App\Unlocator\bin\Release\net7.0-android\```
