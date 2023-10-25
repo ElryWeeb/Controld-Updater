@@ -11,8 +11,9 @@ on:
         description: 'Log level'     
         required: false
         default: 'warning'
-      tags:
-        description: 'Build the app'
+      version:
+        description: 'Version Number'
+        required: true
         
 jobs:
   build:
@@ -29,17 +30,14 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build -c Release -f net7.0-android -p:PackageFormat=Apk
-    - name: version
-      run: echo "::set-output name=version::$(./bin/azblogfilter --version)"
-      id: version
-    - name: release
+    - name: Create release
       uses: actions/create-release@v1
       id: create_release
       with:
         draft: false
         prerelease: false
-        release_name: ${{ steps.version.outputs.version }}
-        tag_name: ${{ github.ref }}
+        release_name: ${{ github.event.inputs.version }}
+        tag_name: ${{ github.inputs.version }}
         body_path: CHANGELOG.md
       env:
         GITHUB_TOKEN: ${{ github.token }}
