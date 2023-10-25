@@ -5,7 +5,7 @@
 Automatically update your (WLAN) IP from your Android via Unlocker API Key.
 
 <a name="req">Usage Requirements: </a>
-- Unlocator Subsrciption --> https://unlocator.com/account/signup/user
+- Unlocator --> https://unlocator.com/account/signup/user
 - Your API Key --> https://unlocator.com/account/advanced
 - Android Phone with Android 10 or higher.
 - The APK File from Releases or your own Build.
