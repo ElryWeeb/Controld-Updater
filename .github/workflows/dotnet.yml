@@ -31,7 +31,7 @@ jobs:
     - name: Build
       run: dotnet publish -c Release -f net7.0-android -p:PackageFormat=Apk
     - name: Test
-      run: Set-Location -Path "D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\net7.0-android\"; DIR
+      run: Set-Location -Path "D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\net7.0-android\publish"; DIR
 #    - name: Create release
 #      uses: actions/create-release@v1
 #      id: create_release
@@ -48,6 +48,6 @@ jobs:
 #        GITHUB_TOKEN: ${{ github.token }}
 #      with:
 #        upload_url: ${{ steps.create_release.outputs.upload_url }}
-#        asset_path: D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\net7.0-android\
+#        asset_path: D:\a\Unlocator_DynIP_App\Unlocator_DynIP_App\Unlocator\bin\Release\net7.0-android\publish
 #        asset_name: com.elry.unlocator.dynip.apk
 #        asset_content_type: application/apk
