@@ -23,21 +23,31 @@
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">13.1</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">25.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">30.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
+		<AssemblyName>Unlocator</AssemblyName>
+		<SignAssembly>False</SignAssembly>
+		<PackageId>$(AssemblyName)</PackageId>
+		<AndroidSigningKeyStore></AndroidSigningKeyStore>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
 	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <WarningLevel>0</WarningLevel>
+	  <WarningLevel>4</WarningLevel>
 	  <EnableLLVM>False</EnableLLVM>
 	  <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
-	  <PublishTrimmed>True</PublishTrimmed>
+	  <PublishTrimmed>False</PublishTrimmed>
 	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	  <DebugSymbols>True</DebugSymbols>
+	  <RunAOTCompilation>False</RunAOTCompilation>
+	  <Optimize>False</Optimize>
+	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
+	  <AndroidStoreUncompressedFileExtensions>dll;png</AndroidStoreUncompressedFileExtensions>
+	  <AndroidSigningStorePass></AndroidSigningStorePass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
@@ -45,8 +55,10 @@
 	  <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
 	  <AndroidKeyStore>False</AndroidKeyStore>
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
-	  <WarningLevel>0</WarningLevel>
+	  <WarningLevel>4</WarningLevel>
 	  <EnableLLVM>False</EnableLLVM>
+	  <AndroidStoreUncompressedFileExtensions>dll;png</AndroidStoreUncompressedFileExtensions>
+	  <AndroidSigningStorePass></AndroidSigningStorePass>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-maccatalyst|AnyCPU'">

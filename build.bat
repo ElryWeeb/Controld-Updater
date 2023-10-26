@@ -1,1 +1,0 @@
-dotnet publish -c Release -f net7.0-android -p:PackageFormat=Apk
