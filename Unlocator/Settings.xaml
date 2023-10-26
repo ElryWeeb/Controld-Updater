@@ -17,7 +17,7 @@
 
             <Label FontSize="20" Text="Your API Key" TextColor="White" />
 
-            <Entry x:Name="ApiKey" Style="{StaticResource CommonEntryStyle}" />
+            <Entry x:Name="ApiKey" />
 
             <Button Text="Save" Clicked="Save_Button_Clicked" TextColor="White" FontSize="20"/>
 

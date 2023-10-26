@@ -28,7 +28,7 @@
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 		<AssemblyName>Unlocator</AssemblyName>
-		<SignAssembly>False</SignAssembly>
+		<SignAssembly>true</SignAssembly>
 		<PackageId>$(AssemblyName)</PackageId>
 		<AndroidSigningKeyStore></AndroidSigningKeyStore>
 	</PropertyGroup>
@@ -46,7 +46,6 @@
 	  <RunAOTCompilation>False</RunAOTCompilation>
 	  <Optimize>False</Optimize>
 	  <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-	  <AndroidStoreUncompressedFileExtensions>dll;png</AndroidStoreUncompressedFileExtensions>
 	  <AndroidSigningStorePass></AndroidSigningStorePass>
 	</PropertyGroup>
 
@@ -57,7 +56,6 @@
 	  <AndroidUseAapt2>True</AndroidUseAapt2>
 	  <WarningLevel>4</WarningLevel>
 	  <EnableLLVM>False</EnableLLVM>
-	  <AndroidStoreUncompressedFileExtensions>dll;png</AndroidStoreUncompressedFileExtensions>
 	  <AndroidSigningStorePass></AndroidSigningStorePass>
 	</PropertyGroup>
 
@@ -71,7 +69,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appiconv2.svg" ForegroundFile="Resources\AppIcon\appiconfgv2.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splashv2.svg" Color="#512BD4" BaseSize="128,128" />

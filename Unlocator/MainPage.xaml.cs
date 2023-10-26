@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using Android.Telecom;
+using System.Net.Http;
 
 namespace Unlocator
 {
@@ -22,8 +23,25 @@ namespace Unlocator
         {
             InitializeComponent();
             Services = Services_;
+            Startup();
             timer.Interval = TimeSpan.FromSeconds(900);
             timer.Tick += (s, e) => UpdateIP();
+        }
+
+        public void Startup()
+        {
+            string hassettings = Preferences.Default.Get("api_key", "none");
+
+            if (hassettings != "none" && hassettings != "")
+            {
+                Connect.IsVisible = true;
+                Setup.Text = "Settings";
+                Setup.IsVisible = true;
+            }
+            else
+            {
+                Setup.IsVisible = true;
+            }
         }
 
         private void Connect_Clicked(object sender, EventArgs e)
@@ -84,6 +102,7 @@ namespace Unlocator
                                 Connection.TextColor = Colors.Green;
                                 Connection.Text = responseString;
                                 Connect.Text = "Stop Service";
+                                ip = responseip;
                             } else
                             {
                                 Connection.Text = "IP Synced";
@@ -136,28 +155,7 @@ namespace Unlocator
 
         private async void Setup_Clicked(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//Settings");
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-
-            Services.Start();
-            Services.Stop();
-
-            string hassettings = Preferences.Default.Get("api_key", "none");
-
-            if (hassettings != "none" && hassettings != "") 
-            {
-                Connect.IsVisible = true;
-                Setup.Text = "Settings";
-                Setup.IsVisible = true;
-            }
-            else
-            {
-                Setup.IsVisible = true;
-            }
+            await Navigation.PushAsync(new Settings());
         }
     }
 }
