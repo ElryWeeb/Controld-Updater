@@ -37,7 +37,7 @@ jobs:
         draft: false
         prerelease: false
         release_name: ${{ github.event.inputs.version }}
-        tag_name: ${{ github.inputs.version }}
+        tag_name: ${{ github.event.inputs.version }}
       env:
         GITHUB_TOKEN: ${{ github.token }}
     - name: upload android artifact
