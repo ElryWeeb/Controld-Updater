@@ -11,10 +11,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>DynUpdater</ApplicationTitle>
+		<ApplicationTitle>ControldUpdater</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.DynUpdater</ApplicationId>
+		<ApplicationId>com.companyname.ControldUpdater</ApplicationId>
 		<ApplicationIdGuid>818de44e-1697-41e6-b350-0d9ea310c95a</ApplicationIdGuid>
 
 		<!-- Versions -->
