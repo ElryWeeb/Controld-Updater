@@ -1,6 +1,6 @@
-# Automatic Dyniamic DNS IP Updater
+# Dyniamic DNS IP Updater
 
-Automatically update your (WLAN) IP from your Android via API.
+Update your (WLAN) IP from your Android via API.
 
 <a name="req">Usage Requirements: </a>
 - Dynamic DNS with a Update URL. (ex. https://www.cloudns.net/)
@@ -10,7 +10,7 @@ Automatically update your (WLAN) IP from your Android via API.
 <a name="how">How to Use the App</a>
 - Install the App
 - Enter your API URL in the Settings
-- Click on the Start Button
+- Click on the Update Button
 - Done
 
 <a name="edit">Edit the App and Build it Yourself </a>
