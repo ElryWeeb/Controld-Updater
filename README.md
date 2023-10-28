@@ -3,7 +3,7 @@
 Automatically update your (WLAN) IP from your Android via API.
 
 <a name="req">Usage Requirements: </a>
-- Dynamic DNS with Update URL.
+- Dynamic DNS with a Update URL. (ex. https://www.cloudns.net/)
 - Android Phone with Android 11 or newer
 - The APK File
 
