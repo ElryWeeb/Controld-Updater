@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Android.Accounts;
+using GoogleGson;
+using Newtonsoft.Json;
+using Org.Json;
 using RestSharp;
-
 
 namespace ControldUpdater
 {
@@ -37,32 +39,75 @@ namespace ControldUpdater
 
         private async void UpdateIP()
         {
-
+            Connect.IsEnabled = false;
             string apikey = Preferences.Default.Get("api_key", "");
             string devicekey = Preferences.Default.Get("device_key", "");
 
 
             if (apikey != "" && devicekey != "")
             {
-#pragma warning disable SYSLIB0014
-                System.Net.WebRequest req = System.Net.WebRequest.Create("http://ifconfig.me");
-                System.Net.WebResponse resp = req.GetResponse();
-                StreamReader sr = new StreamReader(resp.GetResponseStream());
-                string currentip = sr.ReadToEnd().Trim();
+                string currentipv4 = "";
+                string currentipv6 = "";
+                string currentip = "";
 
-                var options = new RestClientOptions("https://api.controld.com/access");
+                var options = new RestClientOptions("https://ipv4.icanhazip.com/");
                 var client = new RestClient(options);
                 var request = new RestRequest("");
+                request.Timeout = 1000;
+
+
+                var response = await client.ExecutePostAsync(request);
+
+                if (response.Content != null)
+                {
+                    currentipv4 = response.Content.Trim();
+                }
+
+                options = new RestClientOptions("https://ipv6.icanhazip.com/");
+                client = new RestClient(options);
+                request = new RestRequest("");
+                request.Timeout = 1000;
+
+                response = await client.ExecutePostAsync(request);
+
+                if (response.Content != null)
+                {
+                    currentipv6 = response.Content.Trim();
+                }
+
+                if (currentipv6 != "" || currentipv4 != "")
+                {
+                    if (currentipv6 != "")
+                    {
+                        currentip = currentipv4 + "," + currentipv6;
+                    }
+                    else
+                    {
+                        currentip = currentipv4;
+                    }
+                }
+                else
+                {
+                    Connection.TextColor = Colors.Red;
+                    Connection.Text = "Error";
+                    MoreInfo.Text = "Couldnt get any IP Adress.";
+                    Connect.IsEnabled = true;
+                    return;
+                }
+
+                options = new RestClientOptions("https://api.controld.com/access");
+                client = new RestClient(options);
+                request = new RestRequest("");
+                request.Timeout = 1000;
                 request.AddHeader("Content-Type", "application/json; charset=utf-8");
                 request.AddHeader("accept", "application/json");
                 request.AddHeader("authorization", "Bearer " + apikey);
                 request.AddParameter("device_id", devicekey);
                 request.AddParameter("ips[]", currentip);
 
-                var response = await client.ExecutePostAsync(request);
+                response = await client.ExecutePostAsync(request);
 
-
-                dynamic stuff = JsonConvert.DeserializeObject(response.Content);
+                Rootobject stuff = JsonConvert.DeserializeObject<Rootobject>(response.Content);
 
                 bool gotUpdated = stuff.success;
 
@@ -79,6 +124,7 @@ namespace ControldUpdater
                     MoreInfo.Text = stuff.error.message;
                 }
             }
+            Connect.IsEnabled = true;
         }
 
 
