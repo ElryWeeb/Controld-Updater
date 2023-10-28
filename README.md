@@ -10,7 +10,7 @@ Update your Controld IP from your Android via API.
 <a name="how">How to Use the App</a>
 - Install the App.
 - Enter your API Key and your Resolver ID for the Device in the Settings.
-- Close and reopen the App to load thee Settings.
+- Close and reopen the App to load the Settings.
 - Click on the Update Button.
 - Done.
 
