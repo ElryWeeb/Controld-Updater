@@ -1,9 +1,9 @@
-# Dyniamic DNS IP Updater
+# Controld IP Updater
 
-Update your (WLAN) IP from your Android via API.
+Update your Controld IP from your Android via API.
 
 <a name="req">Usage Requirements: </a>
-- Dynamic DNS with a Update URL. (ex. https://www.cloudns.net/)
+- Controld DNS and a API URL. (https://controld.com/dashboard/api)
 - Android Phone with Android 11 or newer
 - The APK File
 
@@ -17,6 +17,6 @@ Update your (WLAN) IP from your Android via API.
 - Download the Repository and open it with Visual Studio 2022 with Tools for MAUI
 - Wait for it to set up the Project on your PC
 - Save and close the VS after you made your Changes
-- Go into ```DynIP_App\DynUpdater``` and delete the folder bin and obj
+- Go into ```ElryControld\ControldUpdater``` and delete the folder bin and obj
 - Go into the parent Folder and start ```create_release.bat```
-- The Final APKs are under ```DynIP_App\DynUpdater\bin\Release\net7.0-android\publish```
+- The Final APKs are under ```ElryControld\ControldUpdater\bin\Release\net7.0-android\publish```
