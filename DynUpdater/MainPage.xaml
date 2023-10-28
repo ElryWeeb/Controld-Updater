@@ -12,11 +12,9 @@
 
             <Label FontSize="24" FontAttributes="Bold" Text="Dynamic IP Updater" HorizontalOptions="Center" TextColor="White" />
 
-            <Label x:Name="IP" FontSize="20" Text="No IP Detected" HorizontalOptions="Center" TextColor="CornflowerBlue"/>
+            <Label x:Name="Connection" FontSize="20" Text="" HorizontalOptions="Center"/>
 
-            <Label x:Name="Connection" FontSize="20" Text="Not Connected" HorizontalOptions="Center" TextColor="Red" />
-
-            <Button x:Name="Connect" Text="Connect" Clicked="Connect_Clicked" IsVisible="false" TextColor="White" FontSize="20"/>
+            <Button x:Name="Connect" Text="Update" Clicked="Connect_Clicked" IsVisible="false" TextColor="White" FontSize="20"/>
 
             <Button x:Name="Setup" Text="Set up your DynUpdater Token" Clicked="Setup_Clicked" IsVisible="false" TextColor="White" FontSize="20"/>
         </VerticalStackLayout>

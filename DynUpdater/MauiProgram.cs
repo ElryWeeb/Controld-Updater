@@ -21,16 +21,7 @@ namespace DynUpdater
             builder.Logging.AddDebug();
 #endif
 
-#if ANDROID
-            builder.Services.AddTransient<IServiceTest, DemoServices>();
-#endif
             return builder.Build();
         }
-    }
-
-    public interface IServiceTest
-    {
-        void Start();
-        void Stop();
     }
 }
