@@ -1,12 +1,9 @@
-# Automatic Unlocator IP Updater
+# Automatic Dyniamic DNS IP Updater
 
-<img src="https://github.com/ElryWeeb/Unlocator_DynIP_App/blob/main/Unlocator/Resources/Images/unlocator.png" width=100></img>
-
-Automatically update your (WLAN) IP from your Android via Unlocker API Key.
+Automatically update your (WLAN) IP from your Android via API.
 
 <a name="req">Usage Requirements: </a>
-- Unlocator --> https://unlocator.com/account/signup/user
-- Your API Key --> https://unlocator.com/account/advanced
+- Dynamic DNS with Update URL.
 - Android Phone with Android 11 or newer
 - The APK File
 
