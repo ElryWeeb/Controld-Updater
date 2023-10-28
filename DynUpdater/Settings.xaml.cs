@@ -15,7 +15,7 @@ public partial class Settings : ContentPage
 
         if (savedapi == ApiKey.Text || savedapi == "none")
         {
-            Shell.Current.Navigation.PopToRootAsync();
+            Application.Current.Quit();
         } else
         {
             string text = "Settings not saved, please save or revert changes.";

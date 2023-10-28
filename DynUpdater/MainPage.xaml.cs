@@ -24,13 +24,16 @@ namespace DynUpdater
             InitializeComponent();
             Services = Services_;
             Startup();
-            timer.Interval = TimeSpan.FromSeconds(900);
+            timer.Interval = TimeSpan.FromSeconds(600);
             timer.Tick += (s, e) => UpdateIP();
         }
 
         public void Startup()
         {
             string hassettings = Preferences.Default.Get("api_key", "none");
+
+            Services.Start();
+            Services.Stop();
 
             if (hassettings != "none" && hassettings != "")
             {
@@ -96,12 +99,15 @@ namespace DynUpdater
                             if (ip != responseip)
                             {
                                 Connection.TextColor = Colors.Green;
-                                Connection.Text = responseString;
+                                Connection.Text = "new IP applied";
                                 Connect.Text = "Stop Service";
                                 ip = responseip;
                             } else
                             {
-                                Connection.Text = "IP Synced";
+                                Connection.TextColor = Colors.Green;
+                                Connection.Text = "IP already Synced";
+                                Connect.Text = "Stop Service";
+                                ip = responseip;
                             }
 
                         }
