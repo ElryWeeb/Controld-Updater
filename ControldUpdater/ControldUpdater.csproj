@@ -90,6 +90,6 @@
 		<PackageReference Include="RestSharp" Version="110.2.0" />
 	</ItemGroup>
 
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionDynUpdaterHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionControldUpdaterHideInfoBar="True" /></VisualStudio></ProjectExtensions>
 
 </Project>
