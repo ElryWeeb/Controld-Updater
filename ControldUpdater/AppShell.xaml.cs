@@ -1,4 +1,4 @@
-﻿namespace DynUpdater
+﻿namespace ControldUpdater
 {
     public partial class AppShell : Shell
     {

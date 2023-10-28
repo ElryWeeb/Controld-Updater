@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace DynUpdater
+namespace ControldUpdater
 {
     public class Program
     {

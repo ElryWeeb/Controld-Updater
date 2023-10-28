@@ -2,7 +2,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 using System;
 
-namespace DynUpdater
+namespace ControldUpdater
 {
     internal class Program : MauiApplication
     {

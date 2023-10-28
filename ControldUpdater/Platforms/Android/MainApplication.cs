@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace DynUpdater
+namespace ControldUpdater
 {
     [Application]
     public class MainApplication : MauiApplication

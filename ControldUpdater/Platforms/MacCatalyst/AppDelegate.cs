@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace DynUpdater
+namespace ControldUpdater
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

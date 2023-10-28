@@ -1,7 +1,8 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using static Java.Interop.JniEnvironment;
 
-namespace DynUpdater;
+namespace ControldUpdater;
 public partial class Settings : ContentPage
 { 
 	public Settings()
@@ -12,8 +13,9 @@ public partial class Settings : ContentPage
     protected override bool OnBackButtonPressed()
     {
         string savedapi = Preferences.Default.Get("api_key", "none");
+        string saveddevice = Preferences.Default.Get("device_key", "none");
 
-        if (savedapi == ApiKey.Text || savedapi == "none")
+        if (savedapi == ApiKey.Text ||saveddevice == DeviceKey.Text)
         {
             Application.Current.Quit();
         } else
@@ -36,17 +38,20 @@ public partial class Settings : ContentPage
         base.OnAppearing();
 
         ApiKey.Text = Preferences.Default.Get("api_key", "");
+        DeviceKey.Text = Preferences.Default.Get("device_key", "");
 
     }
 
     private void Save_Button_Clicked(object sender, EventArgs e)
     {
         Preferences.Default.Set("api_key", ApiKey.Text);
+        Preferences.Default.Set("device_key", DeviceKey.Text);
     }
 
     private void Revert_Button_Clicked(object sender, EventArgs e)
     {
         ApiKey.Text = Preferences.Default.Get("api_key", "");
+        DeviceKey.Text = Preferences.Default.Get("device_key", "");
     }
 }
 

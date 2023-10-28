@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-namespace DynUpdater
+namespace ControldUpdater
 {
     public static class MauiProgram
     {

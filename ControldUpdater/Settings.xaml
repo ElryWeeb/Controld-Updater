@@ -12,9 +12,13 @@
 
             <Label FontSize="22" FontAttributes="Bold" Text="Unlocker IP Updater" TextColor="White"/>
 
-            <Label FontSize="20" Text="Your API Key" TextColor="White" />
+            <Label FontSize="20" Text="API Key" TextColor="White" />
 
             <Entry x:Name="ApiKey" />
+
+            <Label FontSize="20" Text="Device Key" TextColor="White" />
+
+            <Entry x:Name="DeviceKey" />
 
             <Button Text="Save" Clicked="Save_Button_Clicked" TextColor="White" FontSize="20"/>
 

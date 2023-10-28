@@ -10,13 +10,15 @@
             Padding="30,30"
             VerticalOptions="Center">
 
-            <Label FontSize="24" FontAttributes="Bold" Text="Dynamic IP Updater" HorizontalOptions="Center" TextColor="White" />
+            <Label FontSize="24" FontAttributes="Bold" Text="Control D IP Updater" HorizontalOptions="Center" TextColor="White" />
 
             <Label x:Name="Connection" FontSize="20" Text="" HorizontalOptions="Center"/>
 
+            <Label x:Name="MoreInfo" FontSize="20" Text="" HorizontalOptions="Center"/>
+
             <Button x:Name="Connect" Text="Update" Clicked="Connect_Clicked" IsVisible="false" TextColor="White" FontSize="20"/>
 
-            <Button x:Name="Setup" Text="Set up your DynUpdater Token" Clicked="Setup_Clicked" IsVisible="false" TextColor="White" FontSize="20"/>
+            <Button Text="Settings" Clicked="Setup_Clicked" TextColor="White" FontSize="20"/>
         </VerticalStackLayout>
     </ScrollView>
 
