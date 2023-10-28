@@ -9,7 +9,7 @@ Automatically update your (WLAN) IP from your Android via API.
 
 <a name="how">How to Use the App</a>
 - Install the App
-- Enter your API Key in the Settings
+- Enter your API URL in the Settings
 - Click on the Start Button
 - Done
 
@@ -19,4 +19,4 @@ Automatically update your (WLAN) IP from your Android via API.
 - Save and close the VS after you made your Changes
 - Go into ```DynIP_App\DynUpdater``` and delete the folder bin and obj
 - Go into the parent Folder and start ```create_release.bat```
-- The Final APKs are under ```DynIP_App\DybUpdater\bin\Release\net7.0-android\publish```
+- The Final APKs are under ```DynIP_App\DynUpdater\bin\Release\net7.0-android\publish```
