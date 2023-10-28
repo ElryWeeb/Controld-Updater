@@ -10,9 +10,6 @@
             Padding="30,30"
             VerticalOptions="Center">
 
-            <Image Source="DynUpdater.png"
-                   HeightRequest="100" />
-
             <Label FontSize="24" FontAttributes="Bold" Text="Dynamic IP Updater" HorizontalOptions="Center" TextColor="White" />
 
             <Label x:Name="IP" FontSize="20" Text="No IP Detected" HorizontalOptions="Center" TextColor="CornflowerBlue"/>

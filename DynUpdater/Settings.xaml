@@ -10,9 +10,6 @@
             Padding="30,30"
             VerticalOptions="Center">
 
-            <Image Source="DynUpdater.png"
-                   HeightRequest="100" />
-
             <Label FontSize="22" FontAttributes="Bold" Text="Unlocker IP Updater" TextColor="White"/>
 
             <Label FontSize="20" Text="Your API Key" TextColor="White" />
