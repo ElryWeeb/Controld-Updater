@@ -3,7 +3,7 @@
 Update your Controld IP from your Android via API.
 
 <a name="req">Usage Requirements: </a>
-- Controld DNS and a API URL. (https://controld.com/dashboard/api)
+- Controld DNS and a Read & Write API URL. (https://controld.com/dashboard/api)
 - Android Phone with Android 11 or newer
 - The APK File
 
