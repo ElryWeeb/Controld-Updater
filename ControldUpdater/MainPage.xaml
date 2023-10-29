@@ -14,7 +14,7 @@
 
             <Label x:Name="Connection" FontSize="20" Text="" HorizontalOptions="Center"/>
 
-            <Label x:Name="MoreInfo" FontSize="20" Text="" HorizontalOptions="Center"/>
+            <Label x:Name="MoreInfo" FontSize="18" TextColor="White" Text="" HorizontalOptions="Center"/>
 
             <Button x:Name="Connect" Text="Update" Clicked="Connect_Clicked" IsVisible="false" TextColor="White" FontSize="20"/>
 

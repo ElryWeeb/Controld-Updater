@@ -1,8 +1,11 @@
 ﻿using Android.Accounts;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 using GoogleGson;
 using Newtonsoft.Json;
 using Org.Json;
 using RestSharp;
+using System.Linq;
 
 namespace ControldUpdater
 {
@@ -46,21 +49,19 @@ namespace ControldUpdater
 
             if (apikey != "" && devicekey != "")
             {
-                string currentipv4 = "";
-                string currentipv6 = "";
-                string currentip = "";
-
                 var options = new RestClientOptions("https://ipv4.icanhazip.com/");
                 var client = new RestClient(options);
                 var request = new RestRequest("");
                 request.Timeout = 1000;
-
+                string ipv4 = "";
+                string ipv6 = "";
 
                 var response = await client.ExecutePostAsync(request);
 
                 if (response.Content != null)
                 {
-                    currentipv4 = response.Content.Trim();
+                    ipv4 = response.Content.Trim();
+
                 }
 
                 options = new RestClientOptions("https://ipv6.icanhazip.com/");
@@ -72,27 +73,25 @@ namespace ControldUpdater
 
                 if (response.Content != null)
                 {
-                    currentipv6 = response.Content.Trim();
+                    ipv6 = response.Content.Trim();
+
                 }
 
-                if (currentipv6 != "" || currentipv4 != "")
-                {
-                    if (currentipv6 != "")
-                    {
-                        currentip = currentipv4 + "," + currentipv6;
-                    }
-                    else
-                    {
-                        currentip = currentipv4;
-                    }
-                }
-                else
-                {
+                if (ipv4 == "")
+                { 
                     Connection.TextColor = Colors.Red;
-                    Connection.Text = "Error";
-                    MoreInfo.Text = "Couldnt get any IP Adress.";
+                    Connection.Text = "Fatal Error";
+                    MoreInfo.Text = "Couldnt get a IPv4 adress.";
                     Connect.IsEnabled = true;
                     return;
+                }
+                else if (ipv6 == "")
+                {
+                    string text = "No IPv6 found, only Updating IPv4.";
+                    ToastDuration duration = ToastDuration.Short;
+                    double fontSize = 14;
+                    var toast = Toast.Make(text, duration, fontSize);
+                    await toast.Show();
                 }
 
                 options = new RestClientOptions("https://api.controld.com/access");
@@ -103,19 +102,49 @@ namespace ControldUpdater
                 request.AddHeader("accept", "application/json");
                 request.AddHeader("authorization", "Bearer " + apikey);
                 request.AddParameter("device_id", devicekey);
-                request.AddParameter("ips[]", currentip);
+                request.AddParameter("ips[]", ipv4);
 
                 response = await client.ExecutePostAsync(request);
 
                 Rootobject stuff = JsonConvert.DeserializeObject<Rootobject>(response.Content);
 
-                bool gotUpdated = stuff.success;
-
-                if (gotUpdated)
+                if (stuff.success)
                 {
-                    Connection.TextColor = Colors.Green;
-                    Connection.Text = "IP applied";
-                    MoreInfo.Text = currentip;
+                    if (ipv6 != "")
+                    {
+                        options = new RestClientOptions("https://api.controld.com/access");
+                        client = new RestClient(options);
+                        request = new RestRequest("");
+                        request.Timeout = 1000;
+                        request.AddHeader("Content-Type", "application/json; charset=utf-8");
+                        request.AddHeader("accept", "application/json");
+                        request.AddHeader("authorization", "Bearer " + apikey);
+                        request.AddParameter("device_id", devicekey);
+                        request.AddParameter("ips[]", ipv6);
+
+                        response = await client.ExecutePostAsync(request);
+
+                        Rootobject stuffv6 = JsonConvert.DeserializeObject<Rootobject>(response.Content);
+
+                        if (stuffv6.success)
+                        {
+                            Connection.TextColor = Colors.Green;
+                            Connection.Text = "IPv4 & v6 applied";
+                            MoreInfo.Text = ipv4 + "\n" + ipv6;
+                        }
+                        else
+                        {
+                            Connection.TextColor = Colors.Orange;
+                            Connection.Text = "IPv4 applied, IPv6 failed";
+                            MoreInfo.Text = ipv4 + "\n --------- \n" + stuffv6.error.message;
+                        }
+                    }
+                    else
+                    {
+                        Connection.TextColor = Colors.Green;
+                        Connection.Text = "IPv4 applied";
+                        MoreInfo.Text = ipv4;
+                    }
                 }
                 else
                 {
